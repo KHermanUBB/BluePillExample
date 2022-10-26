@@ -11,7 +11,6 @@ int main(void)
 {
   SystemClock_Config();
   HardwareInit();
-  MX_FATFS_Init();
  
   while (1){
   }
