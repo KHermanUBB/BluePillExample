@@ -12,5 +12,6 @@ typedef enum {WAITING = 0, PENDING = !WAITING} ExtIntStatus;
 
 void HardwareInit();
 void SystemClock_Config(void);
+void Init_TMR4(void);
 void myprintf(const char *fmt, ...);
 #endif

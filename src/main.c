@@ -13,6 +13,7 @@ int main(void)
   HardwareInit();
  
   while (1){
+     
   }
 }
 

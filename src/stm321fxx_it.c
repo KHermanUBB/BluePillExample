@@ -3,6 +3,19 @@
 #include "stm32f1xx.h"
 #include "HardwareInit.h"
 
+extern TIM_HandleTypeDef htmr;
+
+void TIM4_IRQHandler(void){
+
+  if (__HAL_TIM_GET_FLAG(&htmr, TIM_IT_UPDATE) != 0x00u)
+  {
+    
+      HAL_GPIO_TogglePin(GPIOB, GPIO_PIN_9);
+
+    __HAL_TIM_CLEAR_IT(&htmr, TIM_IT_UPDATE); // Clears The Interrupt Flag
+  }
+
+}
 
 
 void SysTick_Handler(void)
@@ -48,15 +61,3 @@ void PendSV_Handler(void)
 {
 }
 
-
-HAL_DMA1_IRQHandler(DMA_HandleTypeDef *hdma){
-
- 
-  if(__HAL_DMA_GET_TC_FLAG_INDEX(hdma) == DMA_FLAG_TC6){
-
-        HAL_GPIO_TogglePin(GPIOC, GPIO_PIN_13);
-      __HAL_DMA_CLEAR_FLAG(hdma, DMA_FLAG_TC6);
-  }
-
-
-} 
